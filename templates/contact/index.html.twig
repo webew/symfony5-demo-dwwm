@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block header %}
+toto
+{{ parent() }}
+tata
+{% endblock %}
+
+{% block body %}
+    {# {% include "template_parts/_header.html.twig" %} #}
+    {% include "contact/_main.html.twig" %}
+{% endblock %}
