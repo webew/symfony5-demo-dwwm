@@ -31,7 +31,15 @@ class ArticlesFixtures extends Fixture
         $user->setEmail("toto@toto.fr");
         $hash = $this->encoder->encodePassword($user, "toto");
         $user->setPassword($hash);
+        $user->setRoles(['ROLE_USER']);
         $manager->persist($user);
+
+        $admin = new User();
+        $admin->setEmail("admin@admin.fr");
+        $hash = $this->encoder->encodePassword($admin, "admin");
+        $admin->setPassword($hash);
+        $admin->setRoles(['ROLE_ADMIN']);
+        $manager->persist($admin);
 
 
         for ($i = 1; $i <= 10; $i++) {

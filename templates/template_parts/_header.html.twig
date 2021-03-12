@@ -1,8 +1,17 @@
 <header>
 	<nav>
-        <ul>
-            <li><a href="{{ path('main') }}">Accueil</a></li>
-            <li><a href="{{ path('contact') }}">Contact</a></li>
-        </ul>
-    </nav>
+		<ul>
+			<li><a href="{{path('main')}}">Accueil</a></li>
+			<li><a href="{{path('contact')}}">Contact</a></li>
+		</ul>
+	</nav>
+	<div>
+		{% if app.user %}
+			Bonjour
+			{{ app.user.email }}<a href="{{path('app_logout')}}">
+				Déconnexion</a>
+		{% else %}
+			<a href="{{path('app_login')}}">Connexion</a>
+		{% endif %}
+	</div>
 </header>

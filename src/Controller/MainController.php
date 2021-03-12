@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\Request;
 class MainController extends AbstractController
 {
     /**
-     * @Route("/main", name="main")
+     * @Route("/", name="main")
      */
     public function index(ArticleRepository $articleRepository): Response
     {
@@ -35,7 +35,8 @@ class MainController extends AbstractController
     {
         $commentaire = new Commentaire();
         $form = $this->createForm(CommentaireType::class, $commentaire);
-        $user = $userRepository->find(1);
+        // $user = $userRepository->find(1);
+        $user = $this->getUser();
 
         $form->handleRequest($request);
         if ($form->isSubmitted() and $form->isValid()) {
